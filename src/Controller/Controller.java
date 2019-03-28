@@ -15,6 +15,14 @@ public class Controller {
         this.view = view;
     }
 
+
+    public void getRelevantDocument(){
+        //view.get
+    }
+
+
+
+
     
 
 }
