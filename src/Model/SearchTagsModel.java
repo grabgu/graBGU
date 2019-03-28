@@ -15,6 +15,7 @@ import java.util.List;
 
 public class SearchTagsModel implements ISearchTagsModel{
     private Controller controller;
+    private DBConnection con = new DBConnection();
 
     public void setController(Controller controller){
         this.controller = controller;
@@ -91,7 +92,7 @@ public class SearchTagsModel implements ISearchTagsModel{
         return allYears;
     }
 
-    private DBConnection con;
+
 
     @Override
     public List<Document> getRelevantDocuments(List<Tag> tags) {
