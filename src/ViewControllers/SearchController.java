@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SearchController implements IView, ISearchController, Initializable {
-    private final String resourcesPath = "\\";
     private Controller controller;
     public Button btn_search;
     public CheckComboBox ccb_years;
@@ -38,10 +37,6 @@ public class SearchController implements IView, ISearchController, Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        fillCheckComboBox(ccb_courses,controller.getAllCourses());
-        fillCheckComboBox(ccb_departments,controller.getAllDepartments());
-        fillCheckComboBox(ccb_tags,controller.getAllTags());
-        fillCheckComboBox(ccb_years,controller.getAllYears());
         tv_results.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -50,6 +45,13 @@ public class SearchController implements IView, ISearchController, Initializable
                 }
             }
         });
+    }
+
+    public void initializeComboBox(){
+        fillCheckComboBox(ccb_courses,controller.getAllCourses());
+        fillCheckComboBox(ccb_departments,controller.getAllDepartments());
+        fillCheckComboBox(ccb_tags,controller.getAllTags());
+        fillCheckComboBox(ccb_years,controller.getAllYears());
     }
 
     public List<String> getRelevantCoursesList() {

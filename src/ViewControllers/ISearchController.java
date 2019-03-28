@@ -14,4 +14,6 @@ public interface ISearchController {
 
     List<String> getRelevantDepartmentsList();
 
+    void initializeComboBox();
+
 }
