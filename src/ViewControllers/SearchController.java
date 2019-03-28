@@ -70,7 +70,7 @@ public class SearchController implements IView, ISearchController, Initializable
         ArrayList<String> all = new ArrayList<>();
         all.add("All");
         ObservableList allos = FXCollections.observableArrayList(all);
-        list.sort(String.CASE_INSENSITIVE_ORDER);
+        allos.sort(String.CASE_INSENSITIVE_ORDER);
         toFill.getItems().addAll(allos);
         toFill.getItems().addAll(list);
         toFill.getItemBooleanProperty(0).addListener(new ChangeListener<Boolean>() {

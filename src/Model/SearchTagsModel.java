@@ -71,7 +71,6 @@ public class SearchTagsModel implements ISearchTagsModel{
             }
 
         } catch (SQLException e) {
-            int x=0;
         }
         return allTags;
     }
