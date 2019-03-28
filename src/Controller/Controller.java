@@ -1,11 +1,16 @@
 package Controller;
 
+import DataStracture.Document;
+import DataStracture.ShowQueryResult;
 import DataStracture.Tag;
 import Model.ISearchTagsModel;
 import ViewControllers.ISearchController;
 import ViewControllers.IView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controller {
     ISearchTagsModel model;
@@ -21,8 +26,13 @@ public class Controller {
     }
 
 
-    public Object getRelevantDocument(){
-        return model.getRelevantDocument(iSearchController.getRelevantTagsList(),iSearchController.getRelevantCoursesList(),iSearchController.getRelevantYearsList(),iSearchController.getRelevantDepartmentsList());
+    public ObservableList<ShowQueryResult> getRelevantDocument(){
+        List<Document> docs = model.getRelevantDocument(iSearchController.getRelevantTagsList(),iSearchController.getRelevantCoursesList(),iSearchController.getRelevantYearsList(),iSearchController.getRelevantDepartmentsList());
+        ObservableList<ShowQueryResult> result = FXCollections.observableList(new ArrayList<ShowQueryResult>());
+        for (Document doc : docs){
+            result.add(new ShowQueryResult(doc));
+        }
+        return result;
     }
 
 

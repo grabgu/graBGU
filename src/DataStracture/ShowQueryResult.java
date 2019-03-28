@@ -15,7 +15,7 @@ public class ShowQueryResult {
     private StringProperty sp_docLink;
 
 
-    ShowQueryResult(Document doc) {
+    public ShowQueryResult(Document doc) {
         sp_Department = new SimpleStringProperty(doc.getDepartmentName());
         sp_Course = new SimpleStringProperty(doc.getCourseName());
         sp_Type = new SimpleStringProperty(doc.getType().toString());
