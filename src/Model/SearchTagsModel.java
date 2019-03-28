@@ -69,7 +69,6 @@ public class SearchTagsModel implements ISearchTagsModel{
                 tag = new Tag(rs.getInt("TagID"), rs.getString("TagName"), rs.getString("Discription"));
                 allTags.add(tag);
             }
-
         } catch (SQLException e) {
         }
         return allTags;
@@ -96,8 +95,11 @@ public class SearchTagsModel implements ISearchTagsModel{
     @Override
     public List<Document> getRelevantDocument(List<String> tags, List<String> Courses, List<Integer> Years, List<String> Departments) {
         List<Integer> TagIDList= new ArrayList<>();
-        for (Tag tag: tags) {
-            TagIDList.add(getTagID(tag.getName()));
+//        for (Tag tag: tags) {
+//            TagIDList.add(getTagID(tag.getName()));
+//        }
+        for (String tag: tags) {
+            TagIDList.add(getTagID(tag));
         }
         List<Integer> DocIDList = new ArrayList<>();
         for (int TagID: TagIDList){
