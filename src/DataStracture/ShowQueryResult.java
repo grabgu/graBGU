@@ -1,7 +1,10 @@
+package DataStracture;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class ShowQueryResult {
+
     private StringProperty sp_docName;
 
     ShowQueryResult(String docName) {
