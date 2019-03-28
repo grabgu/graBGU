@@ -10,5 +10,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         System.out.println("Dsaas");
+        System.out.println("Dsaas");
+        System.out.println("Dsaas");
     }
 }
