@@ -25,6 +25,9 @@ public class Controller {
         this.view = view;
     }
 
+    public void setiSearchController(ISearchController searchController){
+        this.iSearchController = searchController;
+    }
 
     public ObservableList<ShowQueryResult> getRelevantDocument(){
         List<Document> docs = model.getRelevantDocument(iSearchController.getRelevantTagsList(),iSearchController.getRelevantCoursesList(),iSearchController.getRelevantYearsList(),iSearchController.getRelevantDepartmentsList());

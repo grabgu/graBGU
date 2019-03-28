@@ -25,6 +25,7 @@ import java.util.ResourceBundle;
 
 public class SearchController implements IView, ISearchController, Initializable {
     public TextField txtfld_tags;
+    public TextArea txtarea_currentSearch;
     private Controller controller;
     public Button btn_search;
     public CheckComboBox ccb_years;
@@ -37,6 +38,8 @@ public class SearchController implements IView, ISearchController, Initializable
     public TableColumn<ShowQueryResult, String> tc_type;
     public TableColumn<ShowQueryResult,String> tc_course;
     public TableColumn<ShowQueryResult,String> tc_department;
+
+    private List<String> currentSearch = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -61,7 +64,24 @@ public class SearchController implements IView, ISearchController, Initializable
         txtfld_tags.setEditable(true);
 
         TextFields.bindAutoCompletion(txtfld_tags,new String[]{"Tal","Alon","Dani"}/*controller.getAllTags()*/)
-                .setOnAutoCompleted(event -> {System.out.println("asdf");});
+                .setOnAutoCompleted(event -> updateTextArea());
+    }
+
+    private void updateTextArea() {
+        String currentTag = txtfld_tags.getText();
+        String forTextArea = "";
+        for (String s:currentSearch) {
+            if(currentTag.equals(s)) {
+                txtfld_tags.clear();
+                return;
+            }
+            forTextArea+=s+",";
+        }
+        if(!currentTag.equals(""))
+        currentSearch.add(currentTag);
+        forTextArea+=currentTag;
+        txtfld_tags.clear();
+        txtarea_currentSearch.setText(forTextArea);
     }
 
     public List<String> getRelevantCoursesList() {
@@ -129,5 +149,16 @@ public class SearchController implements IView, ISearchController, Initializable
     public void handleSearch() {
         ObservableList<ShowQueryResult> relevantDocuments = controller.getRelevantDocument();
         showQueryResults(relevantDocuments);
+        currentSearch.clear();
+    }
+
+    public void resetCurrentSearch(ActionEvent actionEvent) {
+        currentSearch.clear();
+        updateTextArea();
+    }
+
+    public void ResetLastSearch(ActionEvent actionEvent) {
+        currentSearch.remove(currentSearch.size()-1);
+        updateTextArea();
     }
 }

@@ -47,6 +47,7 @@ public class LogInController implements IView{
             this.primaryStage.hide();
             StageHolder.getInstance().holdStage(stage);
             SearchController searchController = loader.getController();
+            controller.setiSearchController(searchController);
             searchController.setController(controller);
             searchController.initializeComboBox();
             stage.showAndWait();
