@@ -92,9 +92,8 @@ public class SearchTagsModel implements ISearchTagsModel{
     }
 
 
-
     @Override
-    public List<Document> getRelevantDocuments(List<Tag> tags) {
+    public List<Document> getRelevantDocument(List<Tag> tags, List<String> Courses, List<Integer> Years, List<String> Departments) {
         List<Integer> TagIDList= new ArrayList<>();
         for (Tag tag: tags) {
             TagIDList.add(getTagID(tag.getName()));
@@ -106,17 +105,14 @@ public class SearchTagsModel implements ISearchTagsModel{
 
         List<Document> Documents = new ArrayList<>();
         for (int DocID: TagIDList){
-            Documents.add(getDocument(DocID));
+            Document doc = getDocument(DocID);
+            if(Courses.contains(doc.getCourseName())&& Years.contains(doc.getYear()) && Departments.contains(doc.getDepartmentName()))
+                Documents.add(doc);
         }
 
         ObservableList list = FXCollections.observableList(Documents);
 
         return list;
-    }
-
-    @Override
-    public List<Document> getRelevantDocument(List<Tag> tags, List<String> Courses, List<Integer> Years, List<String> Departments) {
-        return null;
     }
 
     private int getDocumentID(int TagID){
