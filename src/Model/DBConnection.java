@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBConnection {
 
 
-    private final String ConnectionString = "jdbc:sqlite:resources/db/grabgu.db.sqbpro";
+    private final String ConnectionString = "jdbc:sqlite:resources/db/grabgu.db";
 
     Connection conn = null;
     public DBConnection(){}
