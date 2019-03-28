@@ -21,23 +21,8 @@ public class Controller {
     }
 
 
-    public void getRelevantDocument(){
-        iSearchController.getRelevantCoursesList();
-        iSearchController.getRelevantDepartmentsList();
-        iSearchController.getRelevantYearsList();
-
-        iSearchController.getRelevantTagsList();
-
-
-
-
-
-
-
-
-
-
-
+    public Object getRelevantDocument(){
+        return model.getRelevantDocument(iSearchController.getRelevantTagsList(),iSearchController.getRelevantCoursesList(),iSearchController.getRelevantYearsList(),iSearchController.getRelevantDepartmentsList());
     }
 
 
