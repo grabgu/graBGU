@@ -107,9 +107,9 @@ public class SearchTagsModel implements ISearchTagsModel{
         }
 
         List<Document> Documents = new ArrayList<>();
-        for (int DocID: TagIDList){
+        for (int DocID: DocIDList){
             Document doc = getDocument(DocID);
-            if(Courses.contains(doc.getCourseName())&& Years.contains(doc.getYear()) && Departments.contains(doc.getDepartmentName()))
+            if((Courses.size()==0 || Courses.contains(doc.getCourseName()))&& (Years.size()==0 || Years.contains(doc.getYear())) && (Departments.size()==0 || Departments.contains(doc.getDepartmentName())))
                 Documents.add(doc);
         }
 
