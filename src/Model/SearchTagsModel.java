@@ -59,6 +59,8 @@ public class SearchTagsModel implements ISearchTagsModel{
     }
 
     @Override
+    public List<Tag> getAllTags() {
+        return null;
     public List<String> getAllTags() {
         String sql = "SELECT DISTINCT TagName From Tags ";
         List<String> allTags= new ArrayList<>();
@@ -76,6 +78,8 @@ public class SearchTagsModel implements ISearchTagsModel{
     }
 
     @Override
+    public List<Integer> getAllYears() {
+        return null;
     public List<String> getAllYears() {
         String sql = "SELECT DISTINCT Year  From Documents ";
         List<String> allYears = new ArrayList<>();
