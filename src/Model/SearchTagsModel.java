@@ -23,8 +23,6 @@ public class SearchTagsModel implements ISearchTagsModel{
 
     @Override
     public List<String> getAllCourses() {
-
-
         String sql = "SELECT DISTINCT Course From Documents ";
         List<String> allCourses= new ArrayList<>();
         try (Connection conn = con.getSQLLiteDBConnection();
@@ -60,34 +58,31 @@ public class SearchTagsModel implements ISearchTagsModel{
 
     @Override
     public List<Tag> getAllTags() {
-        return null;
-    public List<String> getAllTags() {
-        String sql = "SELECT DISTINCT TagName From Tags ";
-        List<String> allTags= new ArrayList<>();
+        String sql = "SELECT * From Tags ";
+        List<Tag> allTags= new ArrayList<>();
         try (Connection conn = con.getSQLLiteDBConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             ResultSet rs = pstmt.executeQuery();
+            Tag tag;
             while(rs.next()){
-                allTags.add(rs.getString("TagName"));
+                tag = new Tag(rs.getInt("TagID"), rs.getString("TagName"), rs.getString("Discription"));
+                allTags.add(tag);
             }
 
         } catch (SQLException e) {
         }
-
         return allTags;
     }
 
     @Override
     public List<Integer> getAllYears() {
-        return null;
-    public List<String> getAllYears() {
         String sql = "SELECT DISTINCT Year  From Documents ";
-        List<String> allYears = new ArrayList<>();
+        List<Integer> allYears = new ArrayList<>();
         try (Connection conn = con.getSQLLiteDBConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
-                allYears.add(rs.getString("Year"));
+                allYears.add(rs.getInt("Year"));
             }
 
         } catch (SQLException e) {
@@ -117,6 +112,11 @@ public class SearchTagsModel implements ISearchTagsModel{
         ObservableList list = FXCollections.observableList(Documents);
 
         return list;
+    }
+
+    @Override
+    public List<Document> getRelevantDocument(List<Tag> tags, List<String> Courses, List<Integer> Years, List<String> Departments) {
+        return null;
     }
 
     private int getDocumentID(int TagID){
