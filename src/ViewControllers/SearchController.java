@@ -88,7 +88,7 @@ public class SearchController implements IView, ISearchController, Initializable
     public List<String> getRelevantTagsList(){
         List<String> currentSearch = new ArrayList<>();
         for (CheckBox cb : lv_checkedtags.getItems())
-            currentSearch.add(cb.toString());
+            currentSearch.add(cb.getText().toString());
         return currentSearch;
     }
 
