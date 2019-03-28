@@ -1,9 +1,8 @@
 package ViewControllers;
 
 import Controller.Controller;
+import DataStracture.ShowQueryResult;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import org.controlsfx.control.CheckComboBox;
 import javafx.stage.Stage;
 
@@ -13,15 +12,13 @@ public class SearchController implements IView{
     public CheckComboBox ccb_years;
     public CheckComboBox ccb_courses;
     public CheckComboBox ccb_departments;
-    public TableView tv_results;
-    public TableColumn tc_lecturer;
-    public TableColumn tc_year;
-    public TableColumn tc_type;
-    public TableColumn tc_course;
-    public TableColumn tc_department;
-    public CheckComboBox ccb_tegs;
-
-
+    public CheckComboBox ccb_tags;
+    public TableView<ShowQueryResult> tv_results;
+    public TableColumn<> tc_lecturer;
+    public TableColumn<> tc_year;
+    public TableColumn<> tc_type;
+    public TableColumn<> tc_course;
+    public TableColumn<> tc_department;
 
     @Override
     public void setCurrentStage(Stage primaryStage) {
@@ -31,4 +28,5 @@ public class SearchController implements IView{
     public void setController(Controller controller) {
         this.controller = controller;
     }
+
 }
