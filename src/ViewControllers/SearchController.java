@@ -6,17 +6,22 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.CheckComboBox;
 import javafx.stage.Stage;
 import DataStracture.ShowQueryResult;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class SearchController implements IView, ISearchController{
+public class SearchController implements IView, ISearchController, Initializable {
     private Controller controller;
     public Button btn_search;
     public CheckComboBox ccb_years;
@@ -30,11 +35,20 @@ public class SearchController implements IView, ISearchController{
     public TableColumn<ShowQueryResult,String> tc_course;
     public TableColumn<ShowQueryResult,String> tc_department;
 
-    public void initialize(){
+    @Override
+    public void initialize(URL location, ResourceBundle resources){
         fillCheckComboBox(ccb_courses,controller.getAllCourses());
         fillCheckComboBox(ccb_departments,controller.getAllDepartments());
         fillCheckComboBox(ccb_tags,controller.getAllTags());
         fillCheckComboBox(ccb_years,controller.getAllYears());
+        tv_results.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+                    //Main.getInstance().getHostServices().showDocument(tv_results.getSelectionModel().getSelectedItem());
+                }
+            }
+        });
     }
 
     public List<String> getRelevantCoursesList() {
