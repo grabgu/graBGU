@@ -7,6 +7,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -114,4 +115,8 @@ public class SearchController implements IView, ISearchController, Initializable
         this.controller = controller;
     }
 
+    public void handleSearch() {
+        ObservableList<ShowQueryResult> relevantDocuments = controller.getRelevantDocument();
+        showQueryResults(relevantDocuments);
+    }
 }

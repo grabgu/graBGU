@@ -33,6 +33,7 @@ public class SearchTagsModel implements ISearchTagsModel{
             }
 
         } catch (SQLException e) {
+            System.out.println("dsasad");
         }
 
         return allCourses;
