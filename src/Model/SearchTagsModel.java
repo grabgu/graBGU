@@ -20,6 +20,26 @@ public class SearchTagsModel implements ISearchTagsModel{
         this.controller = controller;
     }
 
+    @Override
+    public List<String> getAllCourses() {
+        return null;
+    }
+
+    @Override
+    public List<String> getAllDepartments() {
+        return null;
+    }
+
+    @Override
+    public List<String> getAllTags() {
+        return null;
+    }
+
+    @Override
+    public List<String> getAllYears() {
+        return null;
+    }
+
     private DBConnection con;
 
     @Override
