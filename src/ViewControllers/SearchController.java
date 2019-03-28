@@ -1,6 +1,7 @@
 package ViewControllers;
 
 import Controller.Controller;
+import DataStracture.Tag;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -34,7 +35,6 @@ public class SearchController implements IView, ISearchController{
         fillCheckComboBox(ccb_departments,controller.getAllDepartments());
         fillCheckComboBox(ccb_tags,controller.getAllTags());
         fillCheckComboBox(ccb_years,controller.getAllYears());
-
     }
 
     public List<String> getRelevantCoursesList() {
@@ -43,7 +43,7 @@ public class SearchController implements IView, ISearchController{
 
     public List<Integer> getRelevantYearsList(){return getSelected(ccb_years);}
 
-    public List<String> getRelevantTagsList(){return getSelected(ccb_tags);}
+    public List<Tag> getRelevantTagsList(){return getSelected(ccb_tags);}
 
     public List<String> getRelevantDepartmentsList(){return getSelected(ccb_departments);}
 
@@ -65,15 +65,13 @@ public class SearchController implements IView, ISearchController{
         });
     }
 
-
-
     public List getSelected(CheckComboBox from){
-        List<String> relevantSelect = new ArrayList<>();
+        List relevantSelect = new ArrayList<>();
         from.getCheckModel().getCheckedIndices();
         for (Object o: from.getCheckModel().getCheckedIndices()){
             Integer integer = (Integer)o;
             if(integer!=0)
-                relevantSelect.add(from.getCheckModel().getItem(integer).toString());
+                relevantSelect.add(from.getCheckModel().getItem(integer));
         }
         return relevantSelect;
     }

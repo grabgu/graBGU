@@ -31,12 +31,12 @@ public class SearchTagsModel implements ISearchTagsModel{
     }
 
     @Override
-    public List<String> getAllTags() {
+    public List<Tag> getAllTags() {
         return null;
     }
 
     @Override
-    public List<String> getAllYears() {
+    public List<Integer> getAllYears() {
         return null;
     }
 

@@ -17,7 +17,7 @@ public interface ISearchTagsModel {
 
     List<String> getAllDepartments();
 
-    List<String> getAllTags();
+    List<Tag> getAllTags();
 
-    List<String> getAllYears();
+    List<Integer> getAllYears();
 }

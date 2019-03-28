@@ -1,5 +1,6 @@
 package Controller;
 
+import DataStracture.Tag;
 import Model.ISearchTagsModel;
 import ViewControllers.ISearchController;
 import ViewControllers.IView;
@@ -29,19 +30,19 @@ public class Controller {
     }
 
 
-    public ObservableList getAllCourses() {
+    public ObservableList<String> getAllCourses() {
         return FXCollections.observableList(this.model.getAllCourses());
     }
 
-    public ObservableList getAllDepartments() {
+    public ObservableList<String> getAllDepartments() {
         return FXCollections.observableList(this.model.getAllDepartments());
     }
 
-    public ObservableList getAllTags() {
+    public ObservableList<Tag> getAllTags() {
         return FXCollections.observableList(this.model.getAllTags());
     }
 
-    public ObservableList getAllYears() {
+    public ObservableList<Integer> getAllYears() {
         return FXCollections.observableList(this.model.getAllYears());
     }
 }

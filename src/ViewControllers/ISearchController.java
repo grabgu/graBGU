@@ -1,5 +1,7 @@
 package ViewControllers;
 
+import DataStracture.Tag;
+
 import java.util.List;
 
 public interface ISearchController {
@@ -8,7 +10,7 @@ public interface ISearchController {
 
     List<Integer> getRelevantYearsList();
 
-    List<String> getRelevantTagsList();
+    List<Tag> getRelevantTagsList();
 
     List<String> getRelevantDepartmentsList();
 
