@@ -1,6 +1,7 @@
 package ViewControllers;
 
 import Controller.Controller;
+import DataStracture.Document;
 import DataStracture.Tag;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -30,8 +31,8 @@ public class SearchController implements IView, ISearchController, Initializable
     public CheckComboBox ccb_tags;
     public TableView<ShowQueryResult> tv_results;
     public TableColumn<ShowQueryResult,String> tc_lecturer;
-    public TableColumn<ShowQueryResult,Integer> tc_year;
-    public TableColumn<ShowQueryResult,Integer> tc_type;
+    public TableColumn<ShowQueryResult, Number> tc_year;
+    public TableColumn<ShowQueryResult, String> tc_type;
     public TableColumn<ShowQueryResult,String> tc_course;
     public TableColumn<ShowQueryResult,String> tc_department;
 
@@ -91,6 +92,17 @@ public class SearchController implements IView, ISearchController, Initializable
                 relevantSelect.add(from.getCheckModel().getItem(integer));
         }
         return relevantSelect;
+    }
+
+    private void showQueryResults(ObservableList<ShowQueryResult> results) {
+        if(results != null){
+            tc_department.setCellValueFactory(cellData -> cellData.getValue().getDepartmentProperty());
+            tc_course.setCellValueFactory(cellData -> cellData.getValue().getCourseProperty());
+            tc_lecturer.setCellValueFactory(cellData -> cellData.getValue().getLecturerProperty());
+            tc_type.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
+            tc_year.setCellValueFactory(cellData -> cellData.getValue().getYearProperty());
+            tv_results.setItems(results);
+        }
     }
 
     @Override
