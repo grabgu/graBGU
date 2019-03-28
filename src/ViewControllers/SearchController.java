@@ -15,7 +15,7 @@ import DataStracture.ShowQueryResult;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchController implements IView{
+public class SearchController implements IView, ISearchController{
     private Controller controller;
     public Button btn_search;
     public CheckComboBox ccb_years;

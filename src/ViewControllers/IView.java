@@ -10,12 +10,4 @@ public interface IView {
 
     void setController(Controller controller);
 
-    List<String> getRelevantCourseList();
-
-    List<Integer> getRelevantYearsList();
-
-    List<String> getRelevantTagsList();
-
-    List<String> getRelevantDepartmentsList();
-
 }

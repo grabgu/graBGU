@@ -1,13 +1,15 @@
 package Controller;
 
 import Model.ISearchTagsModel;
+import ViewControllers.ISearchController;
 import ViewControllers.IView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Controller implements IController{
+public class Controller {
     ISearchTagsModel model;
     IView view;
+    ISearchController iSearchController;
 
     public void setModel(ISearchTagsModel model){
         this.model = model;
