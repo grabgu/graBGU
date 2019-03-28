@@ -12,7 +12,7 @@ public class Document {
     private String CourseName;
     private String Link;
 
-    public enum SourceType { מבחן,עבודה}
+    public enum SourceType { מבחן,עבודה }
 
 
     public Document(int Id,SourceType type, int Year, String lecturerName, String departmentName, String courseName, String link) {
