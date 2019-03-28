@@ -5,7 +5,7 @@ import ViewControllers.IView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Controller {
+public class Controller implements IController{
     ISearchTagsModel model;
     IView view;
 
@@ -20,9 +20,9 @@ public class Controller {
 
     public void getRelevantDocument(){
         view.getRelevantCourseList();
-        view.getRelevantCourseList();
-        view.getRelevantCourseList();
-        view.getRelevantCourseList();
+        view.getRelevantDepartmentsList();
+        view.getRelevantTagsList();
+        view.getRelevantYearsList();
 
     }
 
