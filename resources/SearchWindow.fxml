@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import org.controlsfx.control.CheckComboBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewControllers.SearchController">
+<AnchorPane prefHeight="541.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewControllers.SearchController">
    <children>
-      <Button layoutX="32.0" layoutY="351.0" mnemonicParsing="false" text="חפש" />
-      <Label layoutX="558.0" layoutY="14.0" text="חיפוש" />
-      <Label layoutX="547.0" layoutY="45.0" text="מחלקה" />
-      <Label layoutX="326.0" layoutY="45.0" text="קורס" />
-      <ChoiceBox layoutX="394.0" layoutY="41.0" prefWidth="150.0" />
-      <ChoiceBox layoutX="170.0" layoutY="41.0" prefWidth="150.0" />
-      <Label layoutX="118.0" layoutY="45.0" text="שנה" />
+      <ImageView fitHeight="541.0" fitWidth="777.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../WhatsApp%20Image%202019-03-28%20at%2014.52.11.jpeg" />
+         </image>
+      </ImageView>
+      <Button layoutX="39.0" layoutY="178.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="81.0" text="חפש" />
+      <Label layoutX="708.0" layoutY="115.0" text="מחלקות" />
+      <Label layoutX="428.0" layoutY="115.0" text="קורסים" />
+      <Label layoutX="143.0" layoutY="115.0" text="שנים" />
+      <CheckComboBox layoutX="39.0" layoutY="111.0" prefHeight="25.0" prefWidth="98.0" />
+      <CheckComboBox layoutX="251.0" layoutY="111.0" prefHeight="17.0" prefWidth="174.0" />
+      <CheckComboBox layoutX="540.0" layoutY="111.0" prefHeight="25.0" prefWidth="163.0" />
+      <TableView layoutX="8.0" layoutY="229.0" prefHeight="293.0" prefWidth="757.0">
+        <columns>
+          <TableColumn prefWidth="181.0" text="מרצה" />
+          <TableColumn prefWidth="81.0" text="שנה" />
+            <TableColumn prefWidth="141.0" text="סוג" />
+            <TableColumn prefWidth="180.0" text="קורס" />
+            <TableColumn prefWidth="173.0" text="מחלקה" />
+        </columns>
+      </TableView>
+      <Label layoutX="717.0" layoutY="182.0" text="נושאים" />
+      <CheckComboBox layoutX="505.0" layoutY="178.0" prefHeight="25.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
