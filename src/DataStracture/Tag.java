@@ -1,11 +1,10 @@
 package DataStracture;
 
 public class Tag {
-
     private int ID;
+
     private String Name;
     private String Description;
-
     public Tag(int Id,String name, String description) {
         ID = Id;
         Name = name;
@@ -31,4 +30,11 @@ public class Tag {
     public void setDescription(String description) {
         Description = description;
     }
+
+    @Override
+    public String toString() {
+        return Name;
+    }
+
+
 }
