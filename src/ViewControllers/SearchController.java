@@ -5,9 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import org.controlsfx.control.CheckComboBox;
+import javafx.stage.Stage;
 
-public class SearchController {
-
+public class SearchController implements IView{
     private Controller controller;
     public Button btn_search;
     public CheckComboBox ccb_years;
@@ -21,7 +21,13 @@ public class SearchController {
     public TableColumn tc_department;
     public CheckComboBox ccb_tegs;
 
-    
+
+
+    @Override
+    public void setCurrentStage(Stage primaryStage) {
+
+    }
+
     public void setController(Controller controller) {
         this.controller = controller;
     }
