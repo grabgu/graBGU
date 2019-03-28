@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SearchController implements IView, ISearchController, Initializable {
+    private final String resourcesPath = "\\";
     private Controller controller;
     public Button btn_search;
     public CheckComboBox ccb_years;
@@ -45,7 +46,7 @@ public class SearchController implements IView, ISearchController, Initializable
             @Override
             public void handle(MouseEvent event) {
                 if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
-                    //Main.getInstance().getHostServices().showDocument(tv_results.getSelectionModel().getSelectedItem());
+                    Main.getInstance().getHostServices().showDocument(getClass().getClassLoader().getResource(tv_results.getSelectionModel().getSelectedItem().getDocLinkProperty().toString()).getPath());
                 }
             }
         });

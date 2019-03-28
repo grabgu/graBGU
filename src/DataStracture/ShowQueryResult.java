@@ -45,7 +45,7 @@ public class ShowQueryResult {
     }
 
 
-    public StringProperty sp_docLinkProperty() {
+    public StringProperty getDocLinkProperty() {
         return sp_docLink;
     }
 

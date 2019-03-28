@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class Main extends Application {
 
     private static Main instance;
@@ -24,7 +26,6 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("GraBGU");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getClass().getClassLoader().getResource("LogInWindow.fxml").openStream());
         Controller controller = new Controller();
