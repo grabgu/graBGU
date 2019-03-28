@@ -7,10 +7,4 @@ public class Main extends Application {
         launch(args);
     }
 
-    @Override
-    public void start(Stage primaryStage) {
-        System.out.println("Dsaas");
-        System.out.println("Dsaas");
-        System.out.println("Dsaas");
-    }
 }
