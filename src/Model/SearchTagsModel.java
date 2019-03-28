@@ -103,7 +103,7 @@ public class SearchTagsModel implements ISearchTagsModel{
         }
         List<Integer> DocIDList = new ArrayList<>();
         for (int TagID: TagIDList){
-            DocIDList.add(getDocumentID(TagID));
+            DocIDList.addAll(getDocumentID(TagID));
         }
 
         List<Document> Documents = new ArrayList<>();
@@ -118,20 +118,22 @@ public class SearchTagsModel implements ISearchTagsModel{
         return list;
     }
 
-    private int getDocumentID(int TagID){
-            String sql = "SELECT DocumentID From DocumentsTags WHERE TagID=?";
-        int docID = -1;
+    private List<Integer> getDocumentID(int TagID){
+        String sql = "SELECT DocumentID From DocumentsTags WHERE TagID=?";
+        List<Integer> docIDs = new ArrayList<>();
         try (Connection conn = con.getSQLLiteDBConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1,TagID);
             ResultSet rs = pstmt.executeQuery();
 
-            docID=rs.getInt("ID");
+            while (rs.next()) {
+                docIDs.add(rs.getInt("DocumentID"));
+            }
 
 
         } catch (SQLException e) {
         }
-        return docID;
+        return docIDs;
     }
 
     private int getTagID(String TagName){
