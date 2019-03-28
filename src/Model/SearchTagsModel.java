@@ -22,22 +22,77 @@ public class SearchTagsModel implements ISearchTagsModel{
 
     @Override
     public List<String> getAllCourses() {
-        return null;
+
+
+        String sql = "SELECT DISTINCT Course From Documents ";
+        List<String> allCourses= new ArrayList<>();
+        try (Connection conn = con.getSQLLiteDBConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                allCourses.add(rs.getString("Course"));
+            }
+
+        } catch (SQLException e) {
+        }
+
+        return allCourses;
     }
 
     @Override
     public List<String> getAllDepartments() {
-        return null;
+
+        String sql = "SELECT DISTINCT Department From Documents ";
+        List<String> allDepart= new ArrayList<>();
+        try (Connection conn = con.getSQLLiteDBConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                allDepart.add(rs.getString("Department"));
+            }
+
+        } catch (SQLException e) {
+        }
+
+        return allDepart;
     }
 
     @Override
     public List<Tag> getAllTags() {
         return null;
+    public List<String> getAllTags() {
+        String sql = "SELECT DISTINCT TagName From Tags ";
+        List<String> allTags= new ArrayList<>();
+        try (Connection conn = con.getSQLLiteDBConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                allTags.add(rs.getString("TagName"));
+            }
+
+        } catch (SQLException e) {
+        }
+
+        return allTags;
     }
 
     @Override
     public List<Integer> getAllYears() {
         return null;
+    public List<String> getAllYears() {
+        String sql = "SELECT DISTINCT Year  From Documents ";
+        List<String> allYears = new ArrayList<>();
+        try (Connection conn = con.getSQLLiteDBConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                allYears.add(rs.getString("Year"));
+            }
+
+        } catch (SQLException e) {
+        }
+
+        return allYears;
     }
 
     private DBConnection con;
@@ -64,7 +119,7 @@ public class SearchTagsModel implements ISearchTagsModel{
     }
 
     private int getDocumentID(int TagID){
-            String sql = "SELECT DocumentID From DocumentsTags WHERE TagID=TagID";
+            String sql = "SELECT DocumentID From DocumentsTags WHERE TagID=?";
         int docID = -1;
         try (Connection conn = con.getSQLLiteDBConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -80,7 +135,7 @@ public class SearchTagsModel implements ISearchTagsModel{
     }
 
     private int getTagID(String TagName){
-        String sql = "SELECT TagID From Tags WHERE Tags.TagName='TagName' ";
+        String sql = "SELECT TagID From Tags WHERE Tags.TagName=?" ;
         int TagID = -1;
         try (Connection conn = con.getSQLLiteDBConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -95,7 +150,7 @@ public class SearchTagsModel implements ISearchTagsModel{
     }
 
     private Document getDocument(int DocID){
-        String sql = "SELECT * From Documents WHERE Documents.ID = DocID ";
+        String sql = "SELECT * From Documents WHERE Documents.ID = ? ";
         Document document = null;
         try (Connection conn = con.getSQLLiteDBConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
