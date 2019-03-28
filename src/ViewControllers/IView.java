@@ -14,8 +14,8 @@ public interface IView {
 
     List<Integer> getRelevantYearsList();
 
-    List<String> getRelevantCoursesList();
+    List<String> getRelevantTagsList();
 
-    List<String> getRelevantdepartmentsList();
+    List<String> getRelevantDepartmentsList();
 
 }

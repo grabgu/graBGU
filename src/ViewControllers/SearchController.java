@@ -37,6 +37,16 @@ public class SearchController implements IView{
 
     }
 
+    public List<String> getRelevantCoursesList() {
+        return getSelected(ccb_courses);
+    }
+
+    public List<Integer> getRelevantYearsList(){return getSelected(ccb_years);}
+
+    public List<String> getRelevantTagsList(){return getSelected(ccb_tags);}
+
+    public List<String> getRelevantDepartmentsList(){return getSelected(ccb_departments);}
+
     private void fillCheckComboBox(CheckComboBox toFill, ObservableList list){
         ArrayList<String> all = new ArrayList<>();
         all.add("All");
@@ -54,6 +64,8 @@ public class SearchController implements IView{
             }
         });
     }
+
+
 
     public List getSelected(CheckComboBox from){
         List<String> relevantSelect = new ArrayList<>();
