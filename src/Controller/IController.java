@@ -1,5 +1,6 @@
 package Controller;
 
+import DataStracture.Document;
 import javafx.collections.ObservableList;
 
 public interface IController {
@@ -8,6 +9,7 @@ public interface IController {
     ObservableList getAllDepartments();
     ObservableList getAllTags();
     ObservableList getAllYears();
+    ObservableList<Document> getRelevantDocument();
 
 
 

@@ -23,8 +23,19 @@ public class Controller {
     public void getRelevantDocument(){
         iSearchController.getRelevantCoursesList();
         iSearchController.getRelevantDepartmentsList();
-        iSearchController.getRelevantTagsList();
         iSearchController.getRelevantYearsList();
+
+        iSearchController.getRelevantTagsList();
+
+
+
+
+
+
+
+
+
+
 
     }
 
