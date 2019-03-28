@@ -23,36 +23,72 @@ public class SearchTagsModel implements ISearchTagsModel{
     @Override
     public List<String> getAllCourses() {
 
-        String sql = "SELECT Course From Documents ";
-        List<Integer> allCourses= new ArrayList<>();
+
+        String sql = "SELECT DISTINCT Course From Documents ";
+        List<String> allCourses= new ArrayList<>();
         try (Connection conn = con.getSQLLiteDBConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
-                allCourses.add(rs.getInt("TagID"));
+                allCourses.add(rs.getString("Course"));
             }
-
-
-
 
         } catch (SQLException e) {
         }
-        return null;
+
+        return allCourses;
     }
 
     @Override
     public List<String> getAllDepartments() {
-        return null;
+
+        String sql = "SELECT DISTINCT Department From Documents ";
+        List<String> allDepart= new ArrayList<>();
+        try (Connection conn = con.getSQLLiteDBConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                allDepart.add(rs.getString("Department"));
+            }
+
+        } catch (SQLException e) {
+        }
+
+        return allDepart;
     }
 
     @Override
     public List<String> getAllTags() {
-        return null;
+        String sql = "SELECT DISTINCT TagName From Tags ";
+        List<String> allTags= new ArrayList<>();
+        try (Connection conn = con.getSQLLiteDBConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                allTags.add(rs.getString("TagName"));
+            }
+
+        } catch (SQLException e) {
+        }
+
+        return allTags;
     }
 
     @Override
     public List<String> getAllYears() {
-        return null;
+        String sql = "SELECT DISTINCT Year  From Documents ";
+        List<String> allYears = new ArrayList<>();
+        try (Connection conn = con.getSQLLiteDBConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                allYears.add(rs.getString("Year"));
+            }
+
+        } catch (SQLException e) {
+        }
+
+        return allYears;
     }
 
     private DBConnection con;
