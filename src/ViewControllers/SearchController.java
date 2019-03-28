@@ -10,13 +10,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.CheckComboBox;
 import javafx.stage.Stage;
 import DataStracture.ShowQueryResult;
+import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -24,12 +24,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SearchController implements IView, ISearchController, Initializable {
+    public TextField txtfld_tags;
     private Controller controller;
     public Button btn_search;
     public CheckComboBox ccb_years;
     public CheckComboBox ccb_courses;
     public CheckComboBox ccb_departments;
-    public CheckComboBox ccb_tags;
+    //public CheckComboBox ccb_tags;
     public TableView<ShowQueryResult> tv_results;
     public TableColumn<ShowQueryResult,String> tc_lecturer;
     public TableColumn<ShowQueryResult, Number> tc_year;
@@ -39,6 +40,7 @@ public class SearchController implements IView, ISearchController, Initializable
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+
         tv_results.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -47,13 +49,18 @@ public class SearchController implements IView, ISearchController, Initializable
                 }
             }
         });
+
+
     }
 
     public void initializeComboBox(){
         fillCheckComboBox(ccb_courses,controller.getAllCourses());
         fillCheckComboBox(ccb_departments,controller.getAllDepartments());
-        fillCheckComboBox(ccb_tags,controller.getAllTags());
+        //fillCheckComboBox(ccb_tags,controller.getAllTags());
         fillCheckComboBox(ccb_years,controller.getAllYears());
+        txtfld_tags.setEditable(true);
+        TextFields.bindAutoCompletion(txtfld_tags,new String[]{"Tal","Alon","Dani"}/*controller.getAllTags()*/);
+        //txtfld_tags.
     }
 
     public List<String> getRelevantCoursesList() {
@@ -62,7 +69,10 @@ public class SearchController implements IView, ISearchController, Initializable
 
     public List<Integer> getRelevantYearsList(){return getSelected(ccb_years);}
 
-    public List<Tag> getRelevantTagsList(){return getSelected(ccb_tags);}
+    public List<Tag> getRelevantTagsList(){
+        return null;
+        /*return getSelected(ccb_tags);*/
+    }
 
     public List<String> getRelevantDepartmentsList(){return getSelected(ccb_departments);}
 
