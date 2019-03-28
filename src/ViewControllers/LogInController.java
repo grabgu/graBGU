@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class LogInController implements IView {
+public class LogInController implements IView{
     public Button btn_open;
     private Controller controller;
     private Stage primaryStage;
@@ -55,7 +55,4 @@ public class LogInController implements IView {
         }
     }
 
-    public void openFile(ActionEvent actionEvent) {
-        Main.getInstance().getHostServices().showDocument("C:\\Users\\alonz\\Desktop\\abc.pdf");
-    }
 }

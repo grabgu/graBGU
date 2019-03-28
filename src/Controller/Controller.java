@@ -1,13 +1,17 @@
 package Controller;
 
 import Model.ISearchTagsModel;
+import ViewControllers.ISearchController;
 import ViewControllers.IView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.time.chrono.IsoChronology;
+
 public class Controller {
     ISearchTagsModel model;
     IView view;
+    ISearchController iSearchController;
 
     public void setModel(ISearchTagsModel model){
         this.model = model;
@@ -19,11 +23,10 @@ public class Controller {
 
 
     public void getRelevantDocument(){
-        view.getRelevantCourseList();
-        view.getRelevantCourseList();
-        view.getRelevantCourseList();
-        view.getRelevantCourseList();
-
+        iSearchController.getRelevantCourseList();
+        iSearchController.getRelevantCourseList();
+        iSearchController.getRelevantCourseList();
+        iSearchController.getRelevantCourseList();
     }
 
 
