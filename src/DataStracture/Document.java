@@ -4,6 +4,7 @@ import java.time.Year;
 import java.util.Date;
 
 public class Document {
+    private int ID;
     private SourceType Type;
     private int Year;
     private String LecturerName;
@@ -14,13 +15,18 @@ public class Document {
     public enum SourceType { Test,Exe }
 
 
-    public Document(SourceType type, int Year, String lecturerName, String departmentName, String courseName, String link) {
+    public Document(int Id,SourceType type, int Year, String lecturerName, String departmentName, String courseName, String link) {
+        ID = Id;
         Type = type;
         this.Year = Year;
         LecturerName = lecturerName;
         DepartmentName = departmentName;
         CourseName = courseName;
         Link = link;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public SourceType getType() {

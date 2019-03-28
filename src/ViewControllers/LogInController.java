@@ -1,14 +1,11 @@
 package ViewControllers;
 
 import Controller.Controller;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -18,8 +15,17 @@ public class LogInController implements IView{
     public TextField txtfld_username;
     public TextField txtfld_password;
 
+    @Override
+    public void setCurrentStage(Stage primaryStage){
+        this.primaryStage=primaryStage;
+    }
 
-    public void handleLogIn(ActionEvent actionEvent) {
+    @Override
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
+
+    public void handleLogIn() {
         //CHECK IF USER EXISTS
 
         //IF USER EXISTS
@@ -42,11 +48,5 @@ public class LogInController implements IView{
             e.getCause();
             e.printStackTrace();
         }
-        //ELSE
-        //TRY AGAIN
-    }
-
-    public void setCurrentStage(Stage primaryStage){
-        this.primaryStage=primaryStage;
     }
 }

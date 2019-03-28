@@ -2,12 +2,18 @@ package DataStracture;
 
 public class Tag {
 
+    private int ID;
     private String Name;
     private String Description;
 
-    public Tag(String name, String description) {
+    public Tag(int Id,String name, String description) {
+        ID = Id;
         Name = name;
         Description = description;
+    }
+
+    public int getID() {
+        return ID;
     }
 
     public String getName() {
