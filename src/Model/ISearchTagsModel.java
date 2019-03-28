@@ -10,5 +10,6 @@ public interface ISearchTagsModel {
 
     List<Document> getRelevantDocuments(List<Tag> tags);
 
+
     void setController(Controller controller);
 }

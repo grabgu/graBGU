@@ -33,6 +33,6 @@
         </columns>
       </TableView>
       <Label layoutX="717.0" layoutY="182.0" text="נושאים" />
-      <CheckComboBox fx:id="ccb_tegs" layoutX="505.0" layoutY="178.0" prefHeight="25.0" prefWidth="200.0" />
+      <CheckComboBox fx:id="ccb_tags" layoutX="505.0" layoutY="178.0" prefHeight="25.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
