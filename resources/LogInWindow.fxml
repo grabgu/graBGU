@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="296.0" fitWidth="396.0" pickOnBounds="true" smooth="false">
          <image>
-            <Image url="@login.jpeg" />
+            <Image url="login.jpeg" />
          </image>
       </ImageView>
       <Label layoutX="150.0" layoutY="84.0" text="שם משתמש" />
