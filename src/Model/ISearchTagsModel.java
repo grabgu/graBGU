@@ -12,4 +12,12 @@ public interface ISearchTagsModel {
 
 
     void setController(Controller controller);
+
+    List<String> getAllCourses();
+
+    List<String> getAllDepartments();
+
+    List<String> getAllTags();
+
+    List<String> getAllYears();
 }
