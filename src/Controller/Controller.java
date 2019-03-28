@@ -6,27 +6,26 @@ import ViewControllers.IView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.time.chrono.IsoChronology;
-
 public class Controller {
     ISearchTagsModel model;
-    IView view;
+    ISearchController view;
     ISearchController iSearchController;
 
     public void setModel(ISearchTagsModel model){
         this.model = model;
     }
 
-    public void setView(IView view){
+    public void setView(ISearchController view){
         this.view = view;
     }
 
 
     public void getRelevantDocument(){
-        iSearchController.getRelevantCourseList();
-        iSearchController.getRelevantCourseList();
-        iSearchController.getRelevantCourseList();
-        iSearchController.getRelevantCourseList();
+        view.getRelevantCoursesList();
+        view.getRelevantDepartmentsList();
+        view.getRelevantTagsList();
+        view.getRelevantYearsList();
+
     }
 
 
