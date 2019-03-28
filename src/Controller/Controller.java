@@ -8,23 +8,23 @@ import javafx.collections.ObservableList;
 
 public class Controller {
     ISearchTagsModel model;
-    ISearchController view;
+    IView view;
     ISearchController iSearchController;
 
     public void setModel(ISearchTagsModel model){
         this.model = model;
     }
 
-    public void setView(ISearchController view){
+    public void setView(IView view){
         this.view = view;
     }
 
 
     public void getRelevantDocument(){
-        view.getRelevantCoursesList();
-        view.getRelevantDepartmentsList();
-        view.getRelevantTagsList();
-        view.getRelevantYearsList();
+        iSearchController.getRelevantCoursesList();
+        iSearchController.getRelevantDepartmentsList();
+        iSearchController.getRelevantTagsList();
+        iSearchController.getRelevantYearsList();
 
     }
 
