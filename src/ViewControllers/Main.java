@@ -1,6 +1,8 @@
 package ViewControllers;
 
 import Controller.Controller;
+import Model.ISearchTagsModel;
+import Model.SearchTagsModel;
 import javafx.application.Application;
 import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
@@ -25,13 +27,17 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Controller controller = new Controller();
         primaryStage.setTitle("GraBGU");
         FXMLLoader fxmlLoader = new FXMLLoader();
         Parent root = fxmlLoader.load(getClass().getClassLoader().getResource("LogInWindow.fxml").openStream());
-        IView logInWindow = fxmlLoader.getController();
-        logInWindow.setCurrentStage(primaryStage);
-        logInWindow.setController(controller);
+        Controller controller = new Controller();
+        IView view = fxmlLoader.getController();
+        view.setCurrentStage(primaryStage);
+        view.setController(controller);
+        ISearchTagsModel model = new SearchTagsModel();
+        model.setController(controller);
+        controller.setModel(model);
+        controller.setView(view);
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();

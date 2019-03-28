@@ -7,4 +7,5 @@ public interface IView {
     void setCurrentStage(Stage primaryStage);
 
     void setController(Controller controller);
+
 }
