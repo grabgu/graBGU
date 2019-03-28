@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.Controller;
 import DataStracture.Document;
 import DataStracture.Tag;
 import javafx.collections.FXCollections;
@@ -13,6 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchTagsModel implements ISearchTagsModel{
+    private Controller controller;
+
+    public void setController(Controller controller){
+        this.controller = controller;
+    }
 
     private DBConnection con;
 
