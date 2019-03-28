@@ -4,7 +4,6 @@ import Controller.Controller;
 import Model.ISearchTagsModel;
 import Model.SearchTagsModel;
 import javafx.application.Application;
-import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,8 +18,6 @@ public class Main extends Application {
             instance = new Main();
         return instance;
     }
-
-    public HostServices hostServices = getHostServices();
 
     public static void main(String[] args) {
         launch(args);
