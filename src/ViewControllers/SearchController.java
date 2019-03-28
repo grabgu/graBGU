@@ -59,8 +59,9 @@ public class SearchController implements IView, ISearchController, Initializable
         //fillCheckComboBox(ccb_tags,controller.getAllTags());
         fillCheckComboBox(ccb_years,controller.getAllYears());
         txtfld_tags.setEditable(true);
-        TextFields.bindAutoCompletion(txtfld_tags,new String[]{"Tal","Alon","Dani"}/*controller.getAllTags()*/);
-        //txtfld_tags.
+
+        TextFields.bindAutoCompletion(txtfld_tags,new String[]{"Tal","Alon","Dani"}/*controller.getAllTags()*/)
+                .setOnAutoCompleted(event -> {System.out.println("asdf");});
     }
 
     public List<String> getRelevantCoursesList() {
