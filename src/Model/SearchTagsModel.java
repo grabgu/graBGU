@@ -114,6 +114,11 @@ public class SearchTagsModel implements ISearchTagsModel{
         return list;
     }
 
+    @Override
+    public List<Document> getRelevantDocument(List<Tag> tags, List<String> Courses, List<Integer> Years, List<String> Departments) {
+        return null;
+    }
+
     private int getDocumentID(int TagID){
             String sql = "SELECT DocumentID From DocumentsTags WHERE TagID=?";
         int docID = -1;
