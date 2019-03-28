@@ -20,6 +20,41 @@ public class SearchTagsModel implements ISearchTagsModel{
         this.controller = controller;
     }
 
+    @Override
+    public List<String> getAllCourses() {
+
+        String sql = "SELECT Course From Documents ";
+        List<Integer> allCourses= new ArrayList<>();
+        try (Connection conn = con.getSQLLiteDBConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                allCourses.add(rs.getInt("TagID"));
+            }
+
+
+
+
+        } catch (SQLException e) {
+        }
+        return null;
+    }
+
+    @Override
+    public List<String> getAllDepartments() {
+        return null;
+    }
+
+    @Override
+    public List<String> getAllTags() {
+        return null;
+    }
+
+    @Override
+    public List<String> getAllYears() {
+        return null;
+    }
+
     private DBConnection con;
 
     @Override
@@ -44,7 +79,7 @@ public class SearchTagsModel implements ISearchTagsModel{
     }
 
     private int getDocumentID(int TagID){
-            String sql = "SELECT DocumentID From DocumentsTags WHERE TagID=TagID";
+            String sql = "SELECT DocumentID From DocumentsTags WHERE TagID=?";
         int docID = -1;
         try (Connection conn = con.getSQLLiteDBConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -60,7 +95,7 @@ public class SearchTagsModel implements ISearchTagsModel{
     }
 
     private int getTagID(String TagName){
-        String sql = "SELECT TagID From Tags WHERE Tags.TagName='TagName' ";
+        String sql = "SELECT TagID From Tags WHERE Tags.TagName=?" ;
         int TagID = -1;
         try (Connection conn = con.getSQLLiteDBConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -75,7 +110,7 @@ public class SearchTagsModel implements ISearchTagsModel{
     }
 
     private Document getDocument(int DocID){
-        String sql = "SELECT * From Documents WHERE Documents.ID = DocID ";
+        String sql = "SELECT * From Documents WHERE Documents.ID = ? ";
         Document document = null;
         try (Connection conn = con.getSQLLiteDBConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
