@@ -17,15 +17,16 @@ import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class SearchController implements IView, ISearchController, Initializable {
 
+    public ListView<CheckBox> lv_checkedtags;
     private Controller controller;
 
     public TextField txtfld_tags;
-    public TextArea txtarea_currentSearch;
     public Button btn_search;
     public CheckComboBox ccb_years;
     public CheckComboBox ccb_courses;
@@ -37,7 +38,6 @@ public class SearchController implements IView, ISearchController, Initializable
     public TableColumn<ShowQueryResult,String> tc_course;
     public TableColumn<ShowQueryResult,String> tc_department;
 
-    private List<String> currentSearch = new ArrayList<>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
@@ -51,8 +51,6 @@ public class SearchController implements IView, ISearchController, Initializable
                 }
             }
         });
-
-
     }
 
     public void initializeComboBox(){
@@ -60,26 +58,25 @@ public class SearchController implements IView, ISearchController, Initializable
         fillCheckComboBox(ccb_departments,controller.getAllDepartments());
         fillCheckComboBox(ccb_years,controller.getAllYears());
         txtfld_tags.setEditable(true);
-
         TextFields.bindAutoCompletion(txtfld_tags,controller.getAllTags())
                 .setOnAutoCompleted(event -> updateTextArea());
     }
 
     private void updateTextArea() {
-        String currentTag = txtfld_tags.getText();
-        String forTextArea = "";
-        for (String s:currentSearch) {
-            if(currentTag.equals(s)) {
-                txtfld_tags.clear();
-                return;
-            }
-            forTextArea+=s+",";
+
+        boolean toAdd = true;
+        for (int i = 0; i< lv_checkedtags.getItems().size() && toAdd; i++){
+            toAdd = !(lv_checkedtags.getItems().get(i).getText().equals(txtfld_tags.getText()));
         }
-        if(!currentTag.equals(""))
-        currentSearch.add(currentTag);
-        forTextArea+=currentTag;
+        if (toAdd) {
+            CheckBox cb = new CheckBox(txtfld_tags.getText());
+            cb.setSelected(true);
+            lv_checkedtags.getItems().add(cb);
+            cb.selectedProperty().addListener((observable, oldValue, newValue) -> {
+                lv_checkedtags.getItems().remove(cb);
+            });
+        }
         txtfld_tags.clear();
-        txtarea_currentSearch.setText(forTextArea);
     }
 
     public List<String> getRelevantCoursesList() {
@@ -89,6 +86,9 @@ public class SearchController implements IView, ISearchController, Initializable
     public List<Integer> getRelevantYearsList(){return getSelected(ccb_years);}
 
     public List<String> getRelevantTagsList(){
+        List<String> currentSearch = new ArrayList<>();
+        for (CheckBox cb : lv_checkedtags.getItems())
+            currentSearch.add(cb.toString());
         return currentSearch;
     }
 
@@ -106,8 +106,11 @@ public class SearchController implements IView, ISearchController, Initializable
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if (oldValue)
                     toFill.getCheckModel().clearChecks();
-                else
+                else {
                     toFill.getCheckModel().checkAll();
+                    toFill.setStyle("color: red;");
+                }
+
             }
         });
     }
@@ -146,18 +149,6 @@ public class SearchController implements IView, ISearchController, Initializable
     public void handleSearch() {
         ObservableList<ShowQueryResult> relevantDocuments = controller.getRelevantDocument();
         showQueryResults(relevantDocuments);
-        currentSearch.clear();
-    }
-
-    public void resetCurrentSearch(ActionEvent actionEvent) {
-        currentSearch.clear();
-        updateTextArea();
-    }
-
-    public void ResetLastSearch(ActionEvent actionEvent) {
-        if(currentSearch.size()>0) {
-            currentSearch.remove(currentSearch.size() - 1);
-            updateTextArea();
-        }
+        lv_checkedtags.getItems().clear();
     }
 }
