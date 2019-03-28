@@ -1,8 +1,6 @@
 package ViewControllers;
 
 import Controller.Controller;
-import DataStracture.Document;
-import DataStracture.Tag;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -11,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import org.controlsfx.control.CheckComboBox;
 import javafx.stage.Stage;
@@ -24,14 +21,15 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class SearchController implements IView, ISearchController, Initializable {
+
+    private Controller controller;
+
     public TextField txtfld_tags;
     public TextArea txtarea_currentSearch;
-    private Controller controller;
     public Button btn_search;
     public CheckComboBox ccb_years;
     public CheckComboBox ccb_courses;
     public CheckComboBox ccb_departments;
-    //public CheckComboBox ccb_tags;
     public TableView<ShowQueryResult> tv_results;
     public TableColumn<ShowQueryResult,String> tc_lecturer;
     public TableColumn<ShowQueryResult, Number> tc_year;
@@ -59,11 +57,10 @@ public class SearchController implements IView, ISearchController, Initializable
     public void initializeComboBox(){
         fillCheckComboBox(ccb_courses,controller.getAllCourses());
         fillCheckComboBox(ccb_departments,controller.getAllDepartments());
-        //fillCheckComboBox(ccb_tags,controller.getAllTags());
         fillCheckComboBox(ccb_years,controller.getAllYears());
         txtfld_tags.setEditable(true);
 
-        TextFields.bindAutoCompletion(txtfld_tags,new String[]{"Tal","Alon","Dani"}/*controller.getAllTags()*/)
+        TextFields.bindAutoCompletion(txtfld_tags,controller.getAllTags())
                 .setOnAutoCompleted(event -> updateTextArea());
     }
 
@@ -90,9 +87,8 @@ public class SearchController implements IView, ISearchController, Initializable
 
     public List<Integer> getRelevantYearsList(){return getSelected(ccb_years);}
 
-    public List<Tag> getRelevantTagsList(){
-        return null;
-        /*return getSelected(ccb_tags);*/
+    public List<String> getRelevantTagsList(){
+        return currentSearch;
     }
 
     public List<String> getRelevantDepartmentsList(){return getSelected(ccb_departments);}
@@ -158,7 +154,9 @@ public class SearchController implements IView, ISearchController, Initializable
     }
 
     public void ResetLastSearch(ActionEvent actionEvent) {
-        currentSearch.remove(currentSearch.size()-1);
-        updateTextArea();
+        if(currentSearch.size()>0) {
+            currentSearch.remove(currentSearch.size() - 1);
+            updateTextArea();
+        }
     }
 }

@@ -94,7 +94,7 @@ public class SearchTagsModel implements ISearchTagsModel{
 
 
     @Override
-    public List<Document> getRelevantDocument(List<Tag> tags, List<String> Courses, List<Integer> Years, List<String> Departments) {
+    public List<Document> getRelevantDocument(List<String> tags, List<String> Courses, List<Integer> Years, List<String> Departments) {
         List<Integer> TagIDList= new ArrayList<>();
         for (Tag tag: tags) {
             TagIDList.add(getTagID(tag.getName()));
