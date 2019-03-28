@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ISearchController {
 
-    List<String> getRelevantCourseList();
+    List<String> getRelevantCoursesList();
 
     List<Integer> getRelevantYearsList();
 
