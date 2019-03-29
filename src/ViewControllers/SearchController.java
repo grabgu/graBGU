@@ -108,9 +108,7 @@ public class SearchController implements IView, ISearchController, Initializable
                     toFill.getCheckModel().clearChecks();
                 else {
                     toFill.getCheckModel().checkAll();
-                    toFill.setStyle("color: red;");
                 }
-
             }
         });
     }
