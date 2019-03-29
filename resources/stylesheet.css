@@ -1,0 +1,14 @@
+.body {
+    -fx-font: bold italic 10pt "san-serif";
+}
+
+#lv_checkedtags {
+        -fx-background-color: "transparent";
+}
+
+#lv_checkedtags .list-cell:odd{
+        -fx-background-color: "transparent";
+}
+#lv_checkedtags .list-cell:even{
+        -fx-background-color: "transparent";
+}
