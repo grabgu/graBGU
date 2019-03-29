@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.control.PasswordField?>
 <AnchorPane prefHeight="208.0" prefWidth="396.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ViewControllers.LogInController">
    <children>
       <ImageView fitHeight="296.0" fitWidth="396.0" pickOnBounds="true" smooth="false">
@@ -17,7 +18,7 @@
       <Label layoutX="150.0" layoutY="84.0" text="שם משתמש" />
       <Label layoutX="182.0" layoutY="148.0" text="ססמא" />
       <TextField fx:id="txtfld_username" layoutX="29.0" layoutY="110.0" prefHeight="25.0" prefWidth="188.0" />
-      <TextField fx:id="txtfld_password" layoutX="29.0" layoutY="171.0" prefHeight="25.0" prefWidth="188.0" />
+      <PasswordField fx:id="txtfld_password" layoutX="29.0" layoutY="171.0" prefHeight="25.0" prefWidth="188.0" />
       <Button layoutX="89.0" layoutY="233.0" mnemonicParsing="false" onAction="#handleLogIn" text="התחבר" />
    </children>
 </AnchorPane>
